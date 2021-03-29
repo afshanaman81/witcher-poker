@@ -8,5 +8,13 @@ export const Home: FC = () => {
   console.log(web3.defaultAccount)
   console.log(web3.eth.accounts)
 
-  return <div>Home!</div>
+  return <div>
+    <div>
+      <div>Click <button onClick={createGame}>here</button> create a new game</div>
+
+    </div>
+    
+  </div>
+
+
 }

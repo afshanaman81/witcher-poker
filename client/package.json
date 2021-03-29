@@ -1,5 +1,5 @@
 {
-  "name": "witcher-poker-client",
+  "name": "@witcher-poker/client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,7 +18,9 @@
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1",
-    "web3": "^1.3.4"
+    "web3": "^1.3.4",
+    "cross-env": "7.0.3",
+    "@witcher-poker/contracts": "0.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
