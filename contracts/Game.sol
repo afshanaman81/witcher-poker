@@ -3,27 +3,47 @@ pragma solidity >=0.6.6 <=0.8.3;
 
 contract Game {
     // players info
-    address internal gameOwner;
+    address public gameOwner;
     address internal gameOpponent;
 
-    // game info
-    bytes8 firstPlayer;
-    uint256 internal bet;
-    uint8 internal roundCounter = 1;
+	struct player {
+		uint8 number; // player 1 or 2
+		address ethAddress; 
+		
+	}
 
-	constructor() {}
+    // game info
+	struct game {
+		uint8 internal playerCounter = 1;
+		uint8 internal roundCounter = 1;
+	}
+
+
+    bytes1 firstPlayer;
+    uint256 internal bet;
+    
+
+	constructor() public payable {
+		require(msg.value > 0.1 ether);
+	}
 
 	// events
-	
+
 
 	// functions
-    function createGame(address _owner, uint256 _bet) public {
-        gameOwner = _owner;
+	// pretty basic: https://github.com/buddies2705/dice/tree/master/contracts
+    function createGame(uint256 _bet) public {
+		gameOwner = msg.sender;
         bet = _bet;
     }
 
     function joinGame(address _opponent) public {
-        gameOpponent = _opponent;
+		if (!gameOpponent){
+			gameOpponent = _opponent;
+		}else {
+			console.log("Game is already full");
+		}
+
 		chooseFirstPlayer();
     }
 
@@ -41,7 +61,9 @@ contract Game {
 
     function incrementRound() internal {}
 
-    function rollDice() public {}
+    function rollDice() public view returns(uint) {
+		// this should call the random number generator to get a number from 1 to 6
+	}
 
     function gameOptions(address _player, bytes32 _option) public {
         // set the options [raise, call, fold] for the given player
