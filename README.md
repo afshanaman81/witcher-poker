@@ -94,4 +94,5 @@ $ truffle migrate --network maticMainnet
   ```   
 
 
-# View the contract on this link https://explorer-mumbai.maticvigil.com/
+# View the contract
+- on this link https://explorer-mumbai.maticvigil.com/
